@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.onlineorder.onlineordersystem.model.dao.GoodsMapper">
-    <resultMap id="UserInfo" type="com.onlineorder.onlineordersystem.model.pojo.Goods">
+    <resultMap id="GoodsInfo" type="com.onlineorder.onlineordersystem.model.pojo.Goods">
         <id column="id" jdbcType="INTEGER" property="id" />
         <result column="dishname" jdbcType="VARCHAR" property="dishname" />
-        <result column="quantity" jdbcType="int" property="quantity" />
-        <result column="price" jdbcType="int" property="price" />
+        <result column="quantity" jdbcType="INTEGER" property="quantity" />
+        <result column="price" jdbcType="INTEGER" property="price" />
     </resultMap>
-    <select id="getGoods" parameterType="java.lang.String" resultType="com.onlineorder.onlineordersystem.model.pojo.User">
-        select * from user u
-        <where>
-            u.username = #{username,jdbc=VARCHAR}
-        </where>
-    </select>
-    <insert id="insertUser" parameterType="com.onlineorder.onlineordersystem.model.pojo.User">
-        insert into user (username,password) values (#{username},#{password})
-    </insert>
+<!--    <select id="getGoods" parameterType="java.lang.String" resultType="com.onlineorder.onlineordersystem.model.pojo.User">-->
+<!--        select * from user u-->
+<!--        <where>-->
+<!--            u.username = #{username,jdbcType=VARCHAR}-->
+<!--        </where>-->
+<!--    </select>-->
+<!--    <insert id="insertGoods" parameterType="com.onlineorder.onlineordersystem.model.pojo.User">-->
+<!--        insert into user (username,password) values (#{username},#{password})-->
+<!--    </insert>-->
 </mapper>
