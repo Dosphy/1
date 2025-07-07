@@ -1,8 +1,5 @@
 package com.onlineorder.onlineordersystem.model.pojo;
 
-//@Data
-//@NoArgsConstructor
-//@AllArgsConstructor
 public class Result {
     private Integer code;    // 状态码
     private String message; // 返回消息

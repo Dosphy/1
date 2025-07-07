@@ -35,7 +35,7 @@ public class UserController {
         if (flag) {
             return new Result(Code.USER_REGISTER_SUCCESS,"注册成功!",flag);
         } else {
-            return new Result(Code.USER_REGISTER_FAIL,"用户名已存在!",flag);
+            return new Result(Code.USER_EXIST,"用户名已存在!",flag);
         }
     }
 

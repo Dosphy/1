@@ -4,9 +4,7 @@ public class Code {
     public static final Integer USER_LOGIN_SUCCESS = 100;
     public static final Integer USER_LOGIN_FAIL = 101;
     public static final Integer USER_REGISTER_SUCCESS = 200;
-    public static final Integer USER_REGISTER_FAIL = 201;
     public static final Integer USER_EXIST = 202;
-    public static final Integer USER_NOTEXIST = 203;
     public static final Integer USER_UPDATE_SUCCESS = 300;
     public static final Integer USER_UPDATE_FAIL = 301;
     public static final Integer DISH_GET_SUCCESS = 400;

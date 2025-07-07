@@ -22,9 +22,9 @@ public class GoodsController {
     public Result getGoodsInfo(){
         ArrayList<Goods> goods = goodsService.getGoodsInfo();
         if(goods != null){
-            return new Result(Code.GET_ALL_USERINFO_SUCCESS,"获取所有用户信息成功!",goods);
+            return new Result(Code.DISH_GET_SUCCESS,"获取所有菜品信息成功!",goods);
         } else {
-            return new Result(Code.GET_ALL_USERINFO_FAIL,"获取所有用户信息失败",goods);
+            return new Result(Code.DISH_GET_FAIL,"获取所有菜品信息失败",goods);
         }
     }
 
