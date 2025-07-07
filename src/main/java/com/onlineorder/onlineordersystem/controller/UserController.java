@@ -48,7 +48,7 @@ public class UserController {
         }
     }
 
-    @PutMapping("/updateUserInfo")
+    @PostMapping("/updateUserInfo")
     public Result updateUserInfo(@RequestBody User user) {
         boolean flag = userService.updateUserInfo(user);
         if (flag) {
