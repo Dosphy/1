@@ -3,8 +3,7 @@ package com.onlineorder.onlineordersystem.model.pojo;
 public class Goods {
     int dish_id;
     String dish_name;
-    String dish_scale;
-    String path;;
+    String path;
     double price;
     int mon_sale;
     String describe;
@@ -19,14 +18,6 @@ public class Goods {
 
     public void setDish_name(String dish_name) {
         this.dish_name = dish_name;
-    }
-
-    public String getDish_scale() {
-        return dish_scale;
-    }
-
-    public void setDish_scale(String dish_scale) {
-        this.dish_scale = dish_scale;
     }
 
     public double getPrice() {

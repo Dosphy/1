@@ -11,5 +11,5 @@ public interface GoodsMapper {
 
     boolean updateGoodsInfo(Goods goods);
 
-    boolean deleteGoods(int id);
+    boolean deleteGoods(int dish_id);
 }

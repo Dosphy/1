@@ -23,7 +23,7 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public boolean deleteGoods(int id) {
-        return goodsMapper.deleteGoods(id);
+    public boolean deleteGoods(int dish_id) {
+        return goodsMapper.deleteGoods(dish_id);
     }
 }

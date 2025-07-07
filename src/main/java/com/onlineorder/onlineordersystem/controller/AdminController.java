@@ -57,8 +57,8 @@ public class AdminController {
     }
 
     @DeleteMapping("/deleteGoods")
-    public Result deleteGoods(@RequestParam int id){
-        boolean flag = goodsService.deleteGoods(id);
+    public Result deleteGoods(@RequestParam int dish_id){
+        boolean flag = goodsService.deleteGoods(dish_id);
         if (flag) {
             return new Result(Code.DELETE_DISH_SUCCESS,"删除菜品成功!",flag);
         } else {

@@ -39,7 +39,7 @@
                 phone = #{phone,jdbcType=VARCHAR},
             </if>
         </set>
-        WHERE id = #{id,jdbcType=INTEGER}
+        WHERE username = #{username,jdbcType=VARCHAR}
     </update>
 
 <!--    获取所有用户信息-->
