@@ -1,4 +1,7 @@
 package com.onlineorder.onlineordersystem.model.dao;
 
-public class AdminMapper {
+import com.onlineorder.onlineordersystem.model.pojo.Admin;
+
+public interface AdminMapper {
+    Admin login(String username);
 }

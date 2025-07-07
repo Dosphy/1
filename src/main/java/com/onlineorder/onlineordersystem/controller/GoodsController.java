@@ -27,23 +27,5 @@ public class GoodsController {
         }
     }
 
-    @PostMapping("/updateGoodsInfo")
-    public boolean updateGoodsInfo(@RequestBody Goods goods){
-        try {
-            return goodsService.updateGoodsInfo(goods);
-        } catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
 
-    @DeleteMapping("/deleteGoods")
-    public boolean deleteGoods(@RequestParam int id){
-        try {
-            return goodsService.deleteGoods(id);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
 }

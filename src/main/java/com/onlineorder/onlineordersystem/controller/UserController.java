@@ -66,14 +66,4 @@ public class UserController {
             return false;
         }
     }
-
-    @GetMapping("/getAllUserInfo")
-    public ResponseEntity<List<User>> getAllUserInfo() {
-        try {
-            return (ResponseEntity<List<User>>) userService.getAllUserInfo();
-        } catch (Exception e){
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
 }
