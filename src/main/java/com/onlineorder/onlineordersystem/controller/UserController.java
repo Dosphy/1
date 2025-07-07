@@ -1,5 +1,7 @@
 package com.onlineorder.onlineordersystem.controller;
 
+import com.onlineorder.onlineordersystem.model.pojo.Code;
+import com.onlineorder.onlineordersystem.model.pojo.Result;
 import com.onlineorder.onlineordersystem.model.pojo.User;
 import com.onlineorder.onlineordersystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,54 +18,44 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/userLogin")
-    public ResponseEntity<String> userLogin(
+    public Result userLogin(
             @RequestParam String username,
             @RequestParam String password) {
-        try {
-            if (userService.userLogin(username, password)) {
-                return ResponseEntity.ok("登录成功," + username + ",欢迎点餐！");
-            } else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("用户名或密码错误");
-            }
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("登录失败: " + e.getMessage());
+        boolean flag = userService.userLogin(username, password);
+        if (flag) {
+            return new Result(Code.USER_LOGIN_SUCCESS,"登录成功!",flag);
+        } else {
+            return new Result(Code.USER_LOGIN_FAIL,"用户名或密码错误!",flag);
         }
     }
-    @GetMapping("/userRegister")
-    public ResponseEntity<String> userRegister(@RequestBody User user) {
-        try {
-            if (userService.userRegister(user)) {
-                return ResponseEntity.status(HttpStatus.CREATED).body("注册成功");
-            } else {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("用户名已存在");
-            }
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("注册失败: " + e.getMessage());
+
+    @PostMapping("/userRegister")
+    public Result userRegister(@RequestBody User user) {
+        boolean flag = userService.userRegister(user);
+        if (flag) {
+            return new Result(Code.USER_REGISTER_SUCCESS,"注册成功!",flag);
+        } else {
+            return new Result(Code.USER_REGISTER_FAIL,"用户名已存在!",flag);
         }
     }
 
     @GetMapping("/userInfo")
-    public ResponseEntity<User> userInfo(@RequestParam String username) {
-        try {
-            User userInfo = userService.getUserInfo(username);
-            if (userInfo == null) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-            }
-            return ResponseEntity.ok(userInfo);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    public Result userInfo(@RequestParam String username) {
+        User user = userService.getUserInfo(username);
+        if(user != null) {
+            return new Result(Code.GET_ONE_USERINFO_SUCCESS,"获取信息成功!",user);
+        } else {
+            return new Result(Code.GET_ONE_USERINFO_FAIL,"获取信息失败!",null);
         }
     }
 
     @PutMapping("/updateUserInfo")
-    public boolean updateUserInfo(@RequestBody User user) {
-        try {
-            return userService.updateUserInfo(user);
-        } catch (Exception e){
-            e.printStackTrace();
-            return false;
+    public Result updateUserInfo(@RequestBody User user) {
+        boolean flag = userService.updateUserInfo(user);
+        if (flag) {
+            return new Result(Code.USER_UPDATE_SUCCESS,"修改成功!",flag);
+        } else {
+            return new Result(Code.USER_UPDATE_FAIL,"修改失败!",flag);
         }
     }
 }

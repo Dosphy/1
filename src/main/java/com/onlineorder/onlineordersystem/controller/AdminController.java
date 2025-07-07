@@ -1,6 +1,8 @@
 package com.onlineorder.onlineordersystem.controller;
 
+import com.onlineorder.onlineordersystem.model.pojo.Code;
 import com.onlineorder.onlineordersystem.model.pojo.Goods;
+import com.onlineorder.onlineordersystem.model.pojo.Result;
 import com.onlineorder.onlineordersystem.model.pojo.User;
 import com.onlineorder.onlineordersystem.service.AdminService;
 import com.onlineorder.onlineordersystem.service.GoodsService;
@@ -23,44 +25,44 @@ public class AdminController {
     GoodsService goodsService;
 
     @GetMapping("/adminLogin")
-    public boolean adminLogin(
+    public Result adminLogin(
             @RequestParam String username,
             @RequestParam String password) {
-        try {
-            return adminService.login(username,password);
-        } catch (Exception e){
-            e.printStackTrace();
-            return false;
+        boolean flag = adminService.login(username, password);
+        if (flag) {
+            return new Result(Code.ADMIN_LOGIN_SUCCESS,"管理员登录成功!",flag);
+        } else {
+            return new Result(Code.ADMIN_LOGIN_FAIL,"管理员登录失败!",flag);
         }
     }
 
     @GetMapping("/getAllUserInfo")
-    public ResponseEntity<List<User>> getAllUserInfo() {
-        try {
-            return (ResponseEntity<List<User>>) userService.getAllUserInfo();
-        } catch (Exception e){
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    public Result getAllUserInfo() {
+        List<User> list = userService.getAllUserInfo();
+        if (list.size() > 0) {
+            return new Result(Code.GET_ALL_USERINFO_SUCCESS,"获取所有用户信息成功!",list);
+        } else {
+            return new Result(Code.GET_ALL_USERINFO_FAIL,"获取所有用户信息失败!",list);
         }
     }
 
     @PostMapping("/updateGoodsInfo")
-    public boolean updateGoodsInfo(@RequestBody Goods goods){
-        try {
-            return goodsService.updateGoodsInfo(goods);
-        } catch (Exception e){
-            e.printStackTrace();
-            return false;
+    public Result updateGoodsInfo(@RequestBody Goods goods){
+        boolean flag = goodsService.updateGoodsInfo(goods);
+        if (flag) {
+            return new Result(Code.UPDATE_DISH_INFO_SUCCESS,"修改菜品信息成功!",flag);
+        } else {
+            return new Result(Code.UPDATE_DISH_INFO_FAIL,"修改菜品信息失败!",flag);
         }
     }
 
     @DeleteMapping("/deleteGoods")
-    public boolean deleteGoods(@RequestParam int id){
-        try {
-            return goodsService.deleteGoods(id);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+    public Result deleteGoods(@RequestParam int id){
+        boolean flag = goodsService.deleteGoods(id);
+        if (flag) {
+            return new Result(Code.DELETE_DISH_SUCCESS,"删除菜品成功!",flag);
+        } else {
+            return new Result(Code.DELETE_DISH_FAIL,"删除菜品失败!",flag);
         }
     }
 }

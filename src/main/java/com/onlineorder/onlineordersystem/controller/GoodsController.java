@@ -1,6 +1,8 @@
 package com.onlineorder.onlineordersystem.controller;
 
+import com.onlineorder.onlineordersystem.model.pojo.Code;
 import com.onlineorder.onlineordersystem.model.pojo.Goods;
+import com.onlineorder.onlineordersystem.model.pojo.Result;
 import com.onlineorder.onlineordersystem.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,13 +19,12 @@ public class GoodsController {
     GoodsService goodsService;
 
     @GetMapping("/getGoodsInfo")
-    public ResponseEntity<ArrayList<Goods>> getGoodsInfo(){
-        try{
-            ArrayList<Goods> goods = goodsService.getGoodsInfo();
-            return new ResponseEntity<>(goods, HttpStatus.OK);
-        } catch (Exception e){
-            e.printStackTrace();
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+    public Result getGoodsInfo(){
+        ArrayList<Goods> goods = goodsService.getGoodsInfo();
+        if(goods != null){
+            return new Result(Code.GET_ALL_USERINFO_SUCCESS,"获取所有用户信息成功!",goods);
+        } else {
+            return new Result(Code.GET_ALL_USERINFO_FAIL,"获取所有用户信息失败",goods);
         }
     }
 

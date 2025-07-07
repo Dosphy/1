@@ -3,14 +3,14 @@
 <mapper namespace="com.onlineorder.onlineordersystem.model.dao.AdminMapper">
     <resultMap id="UserInfo" type="com.onlineorder.onlineordersystem.model.pojo.Admin">
         <id column="id" jdbcType="INTEGER" property="id" />
-        <result column="username" jdbcType="VARCHAR" property="username" />
-        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="adminname" jdbcType="VARCHAR" property="adminname" />
+        <result column="adminpwd" jdbcType="VARCHAR" property="adminpwd" />
     </resultMap>
     <!--    登录、获取用户信息-->
     <select id="login" parameterType="java.lang.String" resultType="com.onlineorder.onlineordersystem.model.pojo.Admin">
         select * from admin a
         <where>
-            a.username = #{username,jdbcType=VARCHAR}
+            a.adminname = #{username,jdbcType=VARCHAR}
         </where>
     </select>
 
