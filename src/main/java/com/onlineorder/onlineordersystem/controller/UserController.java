@@ -1,9 +1,6 @@
 package com.onlineorder.onlineordersystem.controller;
 
-import com.onlineorder.onlineordersystem.model.pojo.Code;
-import com.onlineorder.onlineordersystem.model.pojo.HistoryOrder;
-import com.onlineorder.onlineordersystem.model.pojo.Result;
-import com.onlineorder.onlineordersystem.model.pojo.User;
+import com.onlineorder.onlineordersystem.model.pojo.*;
 import com.onlineorder.onlineordersystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -68,6 +65,16 @@ public class UserController {
             return new Result(Code.GET_HISTORYORDER_SUCCESS,"获取历史订单信息成功!",list);
         } else {
             return new Result(Code.GET_HISTORYORDER_FAIL,"获取历史订单信息失败!",null);
+        }
+    }
+
+    @PostMapping("/sendOrder")
+    public Result sendOrder(@RequestBody Order order) {
+        boolean flag = userService.sendOrder(order);
+        if (flag) {
+            return new Result(Code.SEND_ORDER_SUCCESS,"发送订单信息成功!",flag);
+        } else {
+            return new Result(Code.SEND_ORDER_FAIL,"发送订单信息失败!",flag);
         }
     }
 }

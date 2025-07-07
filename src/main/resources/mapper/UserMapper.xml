@@ -67,4 +67,10 @@
         DELETE FROM user
         WHERE username = #{username,jdbcType=VARCHAR}
     </delete>
+
+<!--    发送订单信息-->
+    <insert id="sendOrder" parameterType="com.onlineorder.onlineordersystem.model.pojo.Order">
+        INSERT INTO order (dishName,totalPrice,number,userId,username,orderTime,status)
+        VALUES (#{dishName,jdbcType=VARCHAR},#{totalPrice,jdbcType=VARCHAR},#{number,jdbcType=INTEGER},#{userId,jdbcType=INTEGER},#{username,jdbcType=VARCHAR},#{orderTime,jdbcType=DATA},#{status,jdbcType=TINYINT})
+    </insert>
 </mapper>

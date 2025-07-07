@@ -1,6 +1,7 @@
 package com.onlineorder.onlineordersystem.service;
 
 import com.onlineorder.onlineordersystem.model.pojo.HistoryOrder;
+import com.onlineorder.onlineordersystem.model.pojo.Order;
 import com.onlineorder.onlineordersystem.model.pojo.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -23,4 +24,6 @@ public interface UserService {
     ArrayList<HistoryOrder> getHistoryOrder(String username);
 
     boolean deleteUser(String username);
+
+    boolean sendOrder(Order order);
 }

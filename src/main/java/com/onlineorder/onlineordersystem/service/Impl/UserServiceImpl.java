@@ -2,6 +2,7 @@ package com.onlineorder.onlineordersystem.service.Impl;
 
 import com.onlineorder.onlineordersystem.model.dao.UserMapper;
 import com.onlineorder.onlineordersystem.model.pojo.HistoryOrder;
+import com.onlineorder.onlineordersystem.model.pojo.Order;
 import com.onlineorder.onlineordersystem.model.pojo.User;
 import com.onlineorder.onlineordersystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,5 +59,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean deleteUser(String username) {
         return userMapper.deleteUser(username);
+    }
+
+    @Override
+    public boolean sendOrder(Order order) {
+        return userMapper.sendOrder(order);
     }
 }

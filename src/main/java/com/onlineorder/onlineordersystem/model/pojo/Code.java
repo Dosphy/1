@@ -25,5 +25,7 @@ public class Code {
     public static final Integer USER_DELETE_FAIL = 1101;
     public static final Integer ADD_DISHES_SUCCESS = 1200;
     public static final Integer ADD_DISHES_FAIL = 1201;
+    public static final Integer SEND_ORDER_SUCCESS = 1300;
+    public static final Integer SEND_ORDER_FAIL = 1301;
     public static final Integer FAIL = 10001;//全局异常code
 }
