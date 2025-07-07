@@ -3,6 +3,8 @@ package com.onlineorder.onlineordersystem.model.dao;
 import com.onlineorder.onlineordersystem.model.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface UserMapper {
     User getUserByUsername(String username);
@@ -10,4 +12,6 @@ public interface UserMapper {
     void insertUser(User user);
 
     boolean updateUserInfo(User user);
+
+    List<User> getAllUserInfo();
 }

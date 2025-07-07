@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/userControl")
 public class UserController {
@@ -62,6 +64,16 @@ public class UserController {
         } catch (Exception e){
             e.printStackTrace();
             return false;
+        }
+    }
+
+    @GetMapping("/getAllUserInfo")
+    public ResponseEntity<List<User>> getAllUserInfo() {
+        try {
+            return (ResponseEntity<List<User>>) userService.getAllUserInfo();
+        } catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 }

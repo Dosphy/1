@@ -19,7 +19,7 @@
 <!--    注册-->
     <insert id="insertUser" parameterType="com.onlineorder.onlineordersystem.model.pojo.User">
         insert into user (username,password,email,phone)
-        VALUES (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phone,,jdbcType=VARCHAR})
+        VALUES (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR})
     </insert>
 
 <!--    修改用户信息-->
@@ -42,4 +42,8 @@
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
 
+<!--    获取所有用户信息-->
+    <select id="getAllUserInfo" resultType="com.onlineorder.onlineordersystem.model.pojo.User">
+        select * from user;
+    </select>
 </mapper>
