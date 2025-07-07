@@ -26,4 +26,9 @@ public class GoodsServiceImpl implements GoodsService {
     public boolean deleteGoods(int dish_id) {
         return goodsMapper.deleteGoods(dish_id);
     }
+
+    @Override
+    public boolean addDishes(Goods goods) {
+        return goodsMapper.addDishes(goods);
+    }
 }

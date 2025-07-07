@@ -12,4 +12,6 @@ public interface GoodsService {
     boolean updateGoodsInfo(Goods goods);
 
     boolean deleteGoods(int id);
+
+    boolean addDishes(Goods goods);
 }

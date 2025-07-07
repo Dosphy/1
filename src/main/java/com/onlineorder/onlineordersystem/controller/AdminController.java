@@ -65,4 +65,14 @@ public class AdminController {
             return new Result(Code.DELETE_DISH_FAIL,"删除菜品失败!",flag);
         }
     }
+
+    @DeleteMapping("/deleteUser")
+    public Result deleteUser(@RequestParam String username){
+        boolean flag = userService.deleteUser(username);
+        if (flag) {
+            return new Result(Code.USER_DELETE_SUCCESS,"删除用户成功!",flag);
+        } else {
+            return new Result(Code.USER_DELETE_FAIL,"删除用户失败!",flag);
+        }
+    }
 }

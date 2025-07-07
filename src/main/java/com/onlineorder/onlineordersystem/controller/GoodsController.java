@@ -28,5 +28,13 @@ public class GoodsController {
         }
     }
 
-
+    @PostMapping("/addDishes")
+    public Result addDishes(@RequestBody Goods goods){
+        boolean flag = goodsService.addDishes(goods);
+        if (flag) {
+            return new Result(Code.ADD_DISHES_SUCCESS,"添加菜品信息成功!",flag);
+        } else {
+            return new Result(Code.ADD_DISHES_FAIL,"添加菜品信息失败!",flag);
+        }
+    }
 }

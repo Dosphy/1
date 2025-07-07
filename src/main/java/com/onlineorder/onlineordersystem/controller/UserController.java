@@ -1,6 +1,7 @@
 package com.onlineorder.onlineordersystem.controller;
 
 import com.onlineorder.onlineordersystem.model.pojo.Code;
+import com.onlineorder.onlineordersystem.model.pojo.HistoryOrder;
 import com.onlineorder.onlineordersystem.model.pojo.Result;
 import com.onlineorder.onlineordersystem.model.pojo.User;
 import com.onlineorder.onlineordersystem.service.UserService;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -56,6 +58,16 @@ public class UserController {
             return new Result(Code.USER_UPDATE_SUCCESS,"修改成功!",flag);
         } else {
             return new Result(Code.USER_UPDATE_FAIL,"修改失败!",flag);
+        }
+    }
+
+    @GetMapping("/getHistoryOrder")
+    public Result getHistoryOrder(@RequestParam String username) {
+        ArrayList<HistoryOrder> list = userService.getHistoryOrder(username);
+        if(list != null) {
+            return new Result(Code.GET_HISTORYORDER_SUCCESS,"获取历史订单信息成功!",list);
+        } else {
+            return new Result(Code.GET_HISTORYORDER_FAIL,"获取历史订单信息失败!",null);
         }
     }
 }

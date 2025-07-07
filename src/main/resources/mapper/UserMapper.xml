@@ -8,6 +8,15 @@
         <result column="email" jdbcType="VARCHAR" property="email" />
         <result column="phone" jdbcType="VARCHAR" property="phone" />
     </resultMap>
+    <resultMap id="HistoryOrderInfo" type="com.onlineorder.onlineordersystem.model.pojo.HistoryOrder">
+        <id column="order_id" jdbcType="INTEGER" property="order_id" />
+        <result column="dish_name" jdbcType="VARCHAR" property="dish_name" />
+        <result column="total_price" jdbcType="INTEGER" property="total_price" />
+        <result column="number" jdbcType="INTEGER" property="number" />
+        <result column="userId" jdbcType="INTEGER" property="userId" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="orderTime" jdbcType="DATE" property="orderTime" />
+    </resultMap>
 <!--    登录、获取用户信息-->
     <select id="getUserByUsername" parameterType="java.lang.String" resultType="com.onlineorder.onlineordersystem.model.pojo.User">
         select * from user u
@@ -43,7 +52,19 @@
     </update>
 
 <!--    获取所有用户信息-->
-    <select id="getAllUserInfo" resultType="com.onlineorder.onlineordersystem.model.pojo.User">
+    <select id="getAllUserInfo" resultMap="UserInfo">
         select * from user;
     </select>
+
+<!--    获取历史订单信息-->
+    <select id="getHistoryOrder" parameterType="java.lang.String" resultMap="HistoryOrderInfo">
+        select * from history_order ho
+        WHERE ho.username = #{username,jdbcType=VARCHAR}
+    </select>
+
+<!--    删除用户-->
+    <delete id="deleteUser" parameterType="java.lang.String">
+        DELETE FROM user
+        WHERE username = #{username,jdbcType=VARCHAR}
+    </delete>
 </mapper>

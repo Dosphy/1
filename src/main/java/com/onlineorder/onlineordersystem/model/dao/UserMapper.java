@@ -1,8 +1,10 @@
 package com.onlineorder.onlineordersystem.model.dao;
 
+import com.onlineorder.onlineordersystem.model.pojo.HistoryOrder;
 import com.onlineorder.onlineordersystem.model.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Mapper
@@ -14,4 +16,8 @@ public interface UserMapper {
     boolean updateUserInfo(User user);
 
     List<User> getAllUserInfo();
+
+    ArrayList<HistoryOrder> getHistoryOrder(String username);
+
+    boolean deleteUser(String username);
 }

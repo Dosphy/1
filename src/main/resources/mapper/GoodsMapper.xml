@@ -42,4 +42,10 @@
         DELETE FROM dishes
         WHERE dish_id = #{dish_id,jdbcType=INTEGER}
     </delete>
+
+<!--    添加菜品-->
+    <insert id="addDishes" parameterType="com.onlineorder.onlineordersystem.model.pojo.Goods">
+        INSERT INTO dishes (dish_name,path,price,mon_sale,describe)
+        VALUES (#{dish_name,jdbcType=VARCHAR},#{path,jdbcType=VARCHAR},#{price,jdbcType=DECIMAL},#{mon_sale,jdbcType=INTEGER},#{describe,jdbcType=VARCHAR})
+    </insert>
 </mapper>
