@@ -5,14 +5,41 @@
         <id column="id" jdbcType="INTEGER" property="id" />
         <result column="username" jdbcType="VARCHAR" property="username" />
         <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="phone" jdbcType="VARCHAR" property="phone" />
     </resultMap>
+<!--    登录、获取用户信息-->
     <select id="getUserByUsername" parameterType="java.lang.String" resultType="com.onlineorder.onlineordersystem.model.pojo.User">
         select * from user u
         <where>
             u.username = #{username,jdbcType=VARCHAR}
         </where>
     </select>
+
+<!--    注册-->
     <insert id="insertUser" parameterType="com.onlineorder.onlineordersystem.model.pojo.User">
-        insert into user (username,password) values (#{username},#{password})
+        insert into user (username,password,email,phone)
+        VALUES (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phone,,jdbcType=VARCHAR})
     </insert>
+
+<!--    修改用户信息-->
+    <update id="updateUserInfo" parameterType="com.onlineorder.onlineordersystem.model.pojo.User">
+        UPDATE user
+        <set>
+            <if test="username != null and username != ''">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+        </set>
+        WHERE id = #{id,jdbcType=INTEGER}
+    </update>
+
 </mapper>

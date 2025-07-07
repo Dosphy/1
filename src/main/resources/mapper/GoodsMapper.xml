@@ -2,18 +2,48 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.onlineorder.onlineordersystem.model.dao.GoodsMapper">
     <resultMap id="GoodsInfo" type="com.onlineorder.onlineordersystem.model.pojo.Goods">
-        <id column="id" jdbcType="INTEGER" property="id" />
-        <result column="dishname" jdbcType="VARCHAR" property="dishname" />
-        <result column="quantity" jdbcType="INTEGER" property="quantity" />
-        <result column="price" jdbcType="INTEGER" property="price" />
+        <id column="dish_id" jdbcType="INTEGER" property="dish_id" />
+        <result column="dish_name" jdbcType="VARCHAR" property="dish_name" />
+        <result column="dish_scale" jdbcType="VARCHAR" property="dish_scale" />
+        <result column="path" jdbcType="VARCHAR" property="path" />
+        <result column="price" jdbcType="DECIMAL" property="price" />
+        <result column="mon_sale" jdbcType="INTEGER" property="mon_sale" />
+        <result column="discribe" jdbcType="VARCHAR" property="discribe" />
     </resultMap>
-<!--    <select id="getGoods" parameterType="java.lang.String" resultType="com.onlineorder.onlineordersystem.model.pojo.User">-->
-<!--        select * from user u-->
-<!--        <where>-->
-<!--            u.username = #{username,jdbcType=VARCHAR}-->
-<!--        </where>-->
-<!--    </select>-->
-<!--    <insert id="insertGoods" parameterType="com.onlineorder.onlineordersystem.model.pojo.User">-->
-<!--        insert into user (username,password) values (#{username},#{password})-->
-<!--    </insert>-->
+<!--    获取所有菜品信息-->
+    <select id="getGoodsInfo" resultType="com.onlineorder.onlineordersystem.model.pojo.Goods">
+        select * from dishes
+    </select>
+
+<!--    修改信息-->
+    <update id="updateGoodsInfo" parameterType="com.onlineorder.onlineordersystem.model.pojo.Goods">
+        update dishes
+        <set>
+            <if test="dish_name != null and dish_name != ''">
+                dish_name = #{dish_name,jdbcType=VARCHAR},
+            </if>
+            <if test="dish_scale != null and dish_scale != ''">
+                dish_scale = #{dish_scale,jdbcType=VARCHAR},
+            </if>
+            <if test="path != null and path != ''">
+                path = #{path,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=DECIMAL},
+            </if>
+            <if test="mon_sale != null">
+                mon_sale = #{mon_sale,jdbcType=VARCHAR},
+            </if>
+            <if test="discribe != null and discribe != ''">
+                discribe = #{discribe,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where dish_id = #{dish_id,jdbcType=INTEGER}
+    </update>
+
+<!--    删除功能-->
+    <delete id="deleteGoods" parameterType="java.lang.Integer">
+        DELETE FROM dishes
+        WHERE dish_id = #{dish_id,jdbcType=INTEGER}
+    </delete>
 </mapper>

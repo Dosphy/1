@@ -21,8 +21,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean userRegister(String username, String password) {
-        userMapper.insertUser(username,password);
+    public boolean userRegister(User user) {
+        userMapper.insertUser(user);
         return true;
+    }
+
+    @Override
+    public User getUserInfo(String username) {
+        User user = userMapper.getUserByUsername(username);
+        if(user != null){
+            return user;
+        }else {
+            return null;
+        }
+    }
+
+    @Override
+    public boolean updateUserInfo(User user) {
+        return userMapper.updateUserInfo(user);
     }
 }

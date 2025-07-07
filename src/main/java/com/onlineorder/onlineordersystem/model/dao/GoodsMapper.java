@@ -3,9 +3,13 @@ package com.onlineorder.onlineordersystem.model.dao;
 import com.onlineorder.onlineordersystem.model.pojo.Goods;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.ArrayList;
+
 @Mapper
 public interface GoodsMapper {
-    Goods getGoods(int id);
+    ArrayList<Goods> getGoodsInfo();
 
+    boolean updateGoodsInfo(Goods goods);
 
+    boolean deleteGoods(int id);
 }
