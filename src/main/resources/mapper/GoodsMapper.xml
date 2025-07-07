@@ -8,10 +8,10 @@
         <result column="path" jdbcType="VARCHAR" property="path" />
         <result column="price" jdbcType="DECIMAL" property="price" />
         <result column="mon_sale" jdbcType="INTEGER" property="mon_sale" />
-        <result column="discribe" jdbcType="VARCHAR" property="discribe" />
+        <result column="describe" jdbcType="VARCHAR" property="describe" />
     </resultMap>
 <!--    获取所有菜品信息-->
-    <select id="getGoodsInfo" resultType="com.onlineorder.onlineordersystem.model.pojo.Goods">
+    <select id="getGoodsInfo" resultMap="GoodsInfo">
         select * from dishes
     </select>
 
@@ -34,8 +34,8 @@
             <if test="mon_sale != null">
                 mon_sale = #{mon_sale,jdbcType=VARCHAR},
             </if>
-            <if test="discribe != null and discribe != ''">
-                discribe = #{discribe,jdbcType=VARCHAR},
+            <if test="describe != null and describe != ''">
+                describe = #{describe,jdbcType=VARCHAR},
             </if>
         </set>
         where dish_id = #{dish_id,jdbcType=INTEGER}
