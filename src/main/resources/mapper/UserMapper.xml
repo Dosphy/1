@@ -14,7 +14,7 @@
         <result column="total_price" jdbcType="INTEGER" property="total_price" />
         <result column="number" jdbcType="INTEGER" property="number" />
         <result column="username" jdbcType="VARCHAR" property="username" />
-        <result column="orderTime" jdbcType="DATE" property="orderTime" />
+        <result column="orderTime" jdbcType="TIMESTAMP" property="orderTime" />
     </resultMap>
 <!--    登录、获取用户信息-->
     <select id="getUserByUsername" parameterType="java.lang.String" resultType="com.onlineorder.onlineordersystem.model.pojo.User">
