@@ -1,10 +1,13 @@
 package com.onlineorder.onlineordersystem.service.Impl;
 
 import com.onlineorder.onlineordersystem.model.dao.AdminMapper;
-import com.onlineorder.onlineordersystem.model.pojo.Admin;
+import com.onlineorder.onlineordersystem.model.pojo.Stock;
 import com.onlineorder.onlineordersystem.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -19,5 +22,15 @@ public class AdminServiceImpl implements AdminService {
             return false;
         }
 
+    }
+
+    @Override
+    public boolean addStock(Map<String, Object> stock) {
+        return adminMapper.addStock(stock);
+    }
+
+    @Override
+    public List<Stock> getStock() {
+        return adminMapper.getStock();
     }
 }

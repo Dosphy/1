@@ -1,9 +1,6 @@
 package com.onlineorder.onlineordersystem.controller;
 
-import com.onlineorder.onlineordersystem.model.pojo.Code;
-import com.onlineorder.onlineordersystem.model.pojo.Goods;
-import com.onlineorder.onlineordersystem.model.pojo.Result;
-import com.onlineorder.onlineordersystem.model.pojo.User;
+import com.onlineorder.onlineordersystem.model.pojo.*;
 import com.onlineorder.onlineordersystem.service.AdminService;
 import com.onlineorder.onlineordersystem.service.GoodsService;
 import com.onlineorder.onlineordersystem.service.UserService;
@@ -12,7 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/adminControl")
@@ -73,6 +72,29 @@ public class AdminController {
             return new Result(Code.USER_DELETE_SUCCESS,"删除用户成功!",flag);
         } else {
             return new Result(Code.USER_DELETE_FAIL,"删除用户失败!",flag);
+        }
+    }
+
+    @GetMapping("/getStock")
+    public Result getStock(){
+        List<Stock> stock = adminService.getStock();
+        if (stock != null) {
+            return new Result(Code.GET_STOCK_SUCCESS,"获取库存信息成功!",stock);
+        } else {
+            return new Result(Code.GET_STOCK_FAIL,"获取库存信息失败!",stock);
+        }
+    }
+
+    @PostMapping("/addStock")
+    public Result addStock(@RequestParam String materialName,@RequestParam int number){
+        Map<String, Object> stock = new HashMap<>();
+        stock.put("materialName", materialName);
+        stock.put("number", number);
+        boolean flag = adminService.addStock(stock);
+        if (flag) {
+            return new Result(Code.ADD_STOCK_SUCCESS,"增加库存成功!",flag);
+        } else {
+            return new Result(Code.ADD_STOCK_FAIL,"增加库存失败!",flag);
         }
     }
 }

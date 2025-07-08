@@ -6,6 +6,13 @@
         <result column="adminname" jdbcType="VARCHAR" property="adminname" />
         <result column="adminpwd" jdbcType="VARCHAR" property="adminpwd" />
     </resultMap>
+    <resultMap id="StockInfo" type="com.onlineorder.onlineordersystem.model.pojo.Stock">
+        <id column="material_id" jdbcType="INTEGER" property="material_id" />
+        <result column="material" jdbcType="VARCHAR" property="material" />
+        <result column="mat_cat" jdbcType="VARCHAR" property="mat_cat" />
+        <result column="mat_num" jdbcType="VARCHAR" property="mat_num" />
+        <result column="mat_minnum" jdbcType="VARCHAR" property="mat_minnum" />
+    </resultMap>
     <!--    登录、获取用户信息-->
     <select id="login" parameterType="java.lang.String" resultType="com.onlineorder.onlineordersystem.model.pojo.Admin">
         select * from admin a
@@ -14,4 +21,15 @@
         </where>
     </select>
 
+<!--    获取库存功能-->
+    <select id="getStock" resultMap="StockInfo">
+        select * from stock
+    </select>
+
+<!--    库存增加功能-->
+    <update id="addStock" parameterType="java.util.HashMap">
+        UPDATE stock
+        SET mat_num = mat_num + #{number}
+        WHERE material = #{materialName}
+    </update>
 </mapper>

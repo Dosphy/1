@@ -77,4 +77,14 @@ public class UserController {
             return new Result(Code.SEND_ORDER_FAIL,"发送订单信息失败!",flag);
         }
     }
+
+    @PostMapping("/reduceStock")
+    public Result reduceStock(@RequestParam int number) {
+        boolean flag = userService.reduceStock(number);
+        if (flag) {
+            return new Result(Code.REDUCE_STOCK_SUCCESS,"库存减少成功!",flag);
+        } else {
+            return new Result(Code.REDUCE_STOCK_FAIL,"库存减少失败!",flag);
+        }
+    }
 }

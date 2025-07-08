@@ -27,5 +27,12 @@ public class Code {
     public static final Integer ADD_DISHES_FAIL = 1201;
     public static final Integer SEND_ORDER_SUCCESS = 1300;
     public static final Integer SEND_ORDER_FAIL = 1301;
+    public static final Integer ADD_STOCK_SUCCESS = 1400;
+    public static final Integer ADD_STOCK_FAIL = 1401;
+    public static final Integer REDUCE_STOCK_SUCCESS = 1500;
+    public static final Integer REDUCE_STOCK_FAIL = 1501;
+    public static final Integer GET_STOCK_SUCCESS = 1600;
+    public static final Integer GET_STOCK_FAIL = 1601;
+//    public static final Integer STOCK_WARNING = 1602;
     public static final Integer FAIL = 10001;//全局异常code
 }

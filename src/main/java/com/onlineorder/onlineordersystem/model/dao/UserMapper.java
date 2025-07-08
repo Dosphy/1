@@ -23,4 +23,6 @@ public interface UserMapper {
     boolean deleteUser(String username);
 
     boolean sendOrder(Order order);
+
+    boolean reduceStock(int number);
 }

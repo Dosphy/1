@@ -65,4 +65,9 @@ public class UserServiceImpl implements UserService {
     public boolean sendOrder(Order order) {
         return userMapper.sendOrder(order);
     }
+
+    @Override
+    public boolean reduceStock(int number) {
+        return userMapper.reduceStock(number);
+    }
 }

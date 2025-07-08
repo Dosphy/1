@@ -26,4 +26,6 @@ public interface UserService {
     boolean deleteUser(String username);
 
     boolean sendOrder(Order order);
+
+    boolean reduceStock(int number);
 }
