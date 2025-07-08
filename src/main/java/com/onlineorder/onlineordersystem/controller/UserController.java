@@ -52,9 +52,9 @@ public class UserController {
     public Result updateUserInfo(@RequestBody User user) {
         boolean flag = userService.updateUserInfo(user);
         if (flag) {
-            return new Result(Code.USER_UPDATE_SUCCESS,"修改成功!",flag);
+            return new Result(Code.USER_UPDATE_SUCCESS,"用户信息修改成功!",flag);
         } else {
-            return new Result(Code.USER_UPDATE_FAIL,"修改失败!",flag);
+            return new Result(Code.USER_UPDATE_FAIL,"用户信息修改失败!",flag);
         }
     }
 
