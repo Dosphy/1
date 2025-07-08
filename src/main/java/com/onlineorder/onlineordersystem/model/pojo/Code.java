@@ -20,7 +20,7 @@ public class Code {
     public static final Integer GET_ONE_USERINFO_SUCCESS = 900;
     public static final Integer GET_ONE_USERINFO_FAIL = 901;
     public static final Integer GET_HISTORYORDER_SUCCESS = 1000;
-    public static final Integer GET_HISTORYORDER_FAIL = 1001;
+    public static final Integer GET_HISTORYORDER_NOEXISTS = 1001;
     public static final Integer USER_DELETE_SUCCESS = 1100;
     public static final Integer USER_DELETE_FAIL = 1101;
     public static final Integer ADD_DISHES_SUCCESS = 1200;

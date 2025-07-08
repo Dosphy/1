@@ -64,7 +64,7 @@ public class UserController {
         if(list != null) {
             return new Result(Code.GET_HISTORYORDER_SUCCESS,"获取历史订单信息成功!",list);
         } else {
-            return new Result(Code.GET_HISTORYORDER_FAIL,"获取历史订单信息失败!",null);
+            return new Result(Code.GET_HISTORYORDER_NOEXISTS,"当前用户暂无历史订单!",null);
         }
     }
 
