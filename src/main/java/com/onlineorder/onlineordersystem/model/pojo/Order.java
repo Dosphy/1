@@ -7,7 +7,6 @@ public class Order {
     String dishName;
     double totalPrice;
     int number;
-    int userId;
     String username;
     Date orderTime;
     int status;
@@ -42,14 +41,6 @@ public class Order {
 
     public void setNumber(int number) {
         this.number = number;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 
     public String getUsername() {

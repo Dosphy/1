@@ -71,6 +71,7 @@ public class UserController {
     @PostMapping("/sendOrder")
     public Result sendOrder(@RequestBody Order order) {
         boolean flag = userService.sendOrder(order);
+        userService.addHistoryOrder(order);
         if (flag) {
             return new Result(Code.SEND_ORDER_SUCCESS,"发送订单信息成功!",flag);
         } else {

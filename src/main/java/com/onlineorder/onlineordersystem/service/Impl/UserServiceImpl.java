@@ -70,4 +70,9 @@ public class UserServiceImpl implements UserService {
     public boolean reduceStock(int number) {
         return userMapper.reduceStock(number);
     }
+
+    @Override
+    public void addHistoryOrder(Order order) {
+        userMapper.addHistoryOrder(order);
+    }
 }

@@ -33,6 +33,9 @@ public class Code {
     public static final Integer REDUCE_STOCK_FAIL = 1501;
     public static final Integer GET_STOCK_SUCCESS = 1600;
     public static final Integer GET_STOCK_FAIL = 1601;
-//    public static final Integer STOCK_WARNING = 1602;
+    public static final Integer GET_USERORDERS_SUCCESS = 1700;
+    public static final Integer GET_USERORDERS_NOTHING = 1701;
+    public static final Integer DEAL_USERORDERS_SUCCESS = 1800;
+    public static final Integer DEAL_USERORDERS_FAIL = 1801;
     public static final Integer FAIL = 10001;//全局异常code
 }

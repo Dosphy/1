@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -95,6 +96,26 @@ public class AdminController {
             return new Result(Code.ADD_STOCK_SUCCESS,"增加库存成功!",flag);
         } else {
             return new Result(Code.ADD_STOCK_FAIL,"增加库存失败!",flag);
+        }
+    }
+
+    @GetMapping("/getUserOrders")
+    public Result getUserOrders(){
+        ArrayList<Order> orders = adminService.getUserOrders();
+        if (orders != null) {
+            return new Result(Code.GET_USERORDERS_SUCCESS,"获取用户待处理订单信息成功!",orders);
+        } else {
+            return new Result(Code.GET_USERORDERS_NOTHING,"暂无待处理用户订单信息!",orders);
+        }
+    }
+
+    @PostMapping("/dealUserOrder")
+    public Result dealUserOrder(@RequestParam int order_id){
+        boolean flag = adminService.dealUserOrder(order_id);
+        if (flag) {
+            return new Result(Code.DEAL_USERORDERS_SUCCESS,"处理用户订单成功!",flag);
+        } else {
+            return new Result(Code.DEAL_USERORDERS_FAIL,"处理用户订单失败!",flag);
         }
     }
 }

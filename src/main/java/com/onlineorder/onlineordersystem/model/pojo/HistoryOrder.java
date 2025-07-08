@@ -7,7 +7,6 @@ public class HistoryOrder {
     String dish_name;
     int total_price;
     int number;
-    int userId;
     String username;
     Date orderTime;
 
@@ -41,14 +40,6 @@ public class HistoryOrder {
 
     public void setNumber(int number) {
         this.number = number;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 
     public String getUsername() {

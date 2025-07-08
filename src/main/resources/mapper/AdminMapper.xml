@@ -6,6 +6,15 @@
         <result column="adminname" jdbcType="VARCHAR" property="adminname" />
         <result column="adminpwd" jdbcType="VARCHAR" property="adminpwd" />
     </resultMap>
+    <resultMap id="OrderInfo" type="com.onlineorder.onlineordersystem.model.pojo.Order">
+        <id column="order_id" jdbcType="INTEGER" property="order_id" />
+        <result column="dish_name" jdbcType="VARCHAR" property="dish_name" />
+        <result column="total_price" jdbcType="INTEGER" property="total_price" />
+        <result column="number" jdbcType="INTEGER" property="number" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="orderTime" jdbcType="TIMESTAMP" property="orderTime" />
+        <result column="status" jdbcType="TINYINT" property="status" />
+    </resultMap>
     <resultMap id="StockInfo" type="com.onlineorder.onlineordersystem.model.pojo.Stock">
         <id column="material_id" jdbcType="INTEGER" property="material_id" />
         <result column="material" jdbcType="VARCHAR" property="material" />
@@ -30,6 +39,18 @@
     <update id="addStock" parameterType="java.util.HashMap">
         UPDATE stock
         SET mat_num = mat_num + #{number}
-        WHERE material = #{materialName}
+        WHERE material = #{materialName,jdbcType=VARCHAR}
+    </update>
+
+<!--    获取用户订单-->
+    <select id="getUserOrders" resultMap="OrderInfo">
+        select * from orders where status = 0;
+    </select>
+
+<!--    管理员处理用户订单-->
+    <update id="dealUserOrder" parameterType="java.lang.Integer">
+        update orders
+        set status = 1
+        where order_id = #{orderid,,jdbcType=INTEGER}
     </update>
 </mapper>

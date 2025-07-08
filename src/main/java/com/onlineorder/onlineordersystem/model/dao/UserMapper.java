@@ -25,4 +25,6 @@ public interface UserMapper {
     boolean sendOrder(Order order);
 
     boolean reduceStock(int number);
+
+    void addHistoryOrder(Order order);
 }

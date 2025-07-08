@@ -28,4 +28,6 @@ public interface UserService {
     boolean sendOrder(Order order);
 
     boolean reduceStock(int number);
+
+    void addHistoryOrder(Order order);
 }

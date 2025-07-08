@@ -1,9 +1,11 @@
 package com.onlineorder.onlineordersystem.model.dao;
 
 import com.onlineorder.onlineordersystem.model.pojo.Admin;
+import com.onlineorder.onlineordersystem.model.pojo.Order;
 import com.onlineorder.onlineordersystem.model.pojo.Stock;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,4 +17,8 @@ public interface AdminMapper {
 
 
     List<Stock> getStock();
+
+    ArrayList<Order> getUserOrders();
+
+    boolean dealUserOrder(int order_id);
 }
