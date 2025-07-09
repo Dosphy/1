@@ -70,7 +70,7 @@
 <!--    发送订单信息-->
     <insert id="sendOrder" parameterType="com.onlineorder.onlineordersystem.model.pojo.Order">
         INSERT INTO orders (dishName,totalPrice,number,username,orderTime,status)
-        VALUES (#{dishName,jdbcType=VARCHAR},#{totalPrice,jdbcType=VARCHAR},#{number,jdbcType=INTEGER},#{username,jdbcType=VARCHAR},NOW(),#{status,jdbcType=TINYINT})
+        VALUES (#{dishName,jdbcType=VARCHAR},#{totalPrice,jdbcType=INTEGER},#{number,jdbcType=INTEGER},#{username,jdbcType=VARCHAR},NOW(),#{status,jdbcType=TINYINT})
     </insert>
 
 <!--    库存按人数减少-->
@@ -82,6 +82,6 @@
 <!--    添加历史订单-->
     <insert id="addHistoryOrder" parameterType="com.onlineorder.onlineordersystem.model.pojo.Order">
         INSERT INTO history_order (dish_name,total_price,number,username,orderTime)
-        VALUES (#{dishName,jdbcType=VARCHAR},#{totalPrice,jdbcType=VARCHAR},#{number,jdbcType=INTEGER},#{username,jdbcType=VARCHAR},NOW())
+        VALUES (#{dishName,jdbcType=VARCHAR},#{totalPrice,jdbcType=INTEGER},#{number,jdbcType=INTEGER},#{username,jdbcType=VARCHAR},NOW())
     </insert>
 </mapper>

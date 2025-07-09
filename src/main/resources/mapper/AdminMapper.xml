@@ -51,6 +51,6 @@
     <update id="dealUserOrder" parameterType="java.lang.Integer">
         update orders
         set status = 1
-        where order_id = #{orderid,,jdbcType=INTEGER}
+        where order_id = #{orderid,jdbcType=INTEGER}
     </update>
 </mapper>
