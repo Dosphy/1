@@ -6,7 +6,15 @@ public class Goods {
     String path;
     double price;
     int mon_sale;
-    String describe;
+    String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public int getDish_id() {
         return dish_id;
@@ -42,14 +50,6 @@ public class Goods {
 
     public void setMon_sale(int mon_sale) {
         this.mon_sale = mon_sale;
-    }
-
-    public String getDescribe() {
-        return describe;
-    }
-
-    public void setDescribe(String describe) {
-        this.describe = describe;
     }
 
     public void setDish_id(int dish_id) {

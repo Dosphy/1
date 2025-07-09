@@ -44,7 +44,7 @@
 
 <!--    获取用户订单-->
     <select id="getUserOrders" resultMap="OrderInfo">
-        select * from orders where status = 0;
+        select * from orders;
     </select>
 
 <!--    管理员处理用户订单-->

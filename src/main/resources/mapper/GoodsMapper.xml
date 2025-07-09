@@ -7,14 +7,15 @@
         <result column="path" jdbcType="VARCHAR" property="path" />
         <result column="price" jdbcType="DECIMAL" property="price" />
         <result column="mon_sale" jdbcType="INTEGER" property="mon_sale" />
-        <result column="describe" jdbcType="VARCHAR" property="describe" />
+        <result column="description" jdbcType="VARCHAR" property="description" />
     </resultMap>
-<!--    获取所有菜品信息-->
+
+    <!-- 获取所有菜品信息 -->
     <select id="getGoodsInfo" resultMap="GoodsInfo">
-        select * from dishes
+        select dish_id, dish_name, path, price, mon_sale, description from dishes
     </select>
 
-<!--    修改信息-->
+    <!-- 修改信息 -->
     <update id="updateGoodsInfo" parameterType="com.onlineorder.onlineordersystem.model.pojo.Goods">
         update dishes
         <set>
@@ -28,24 +29,26 @@
                 price = #{price,jdbcType=DECIMAL},
             </if>
             <if test="mon_sale != null">
-                mon_sale = #{mon_sale,jdbcType=VARCHAR},
+                mon_sale = #{mon_sale,jdbcType=INTEGER},
             </if>
-            <if test="describe != null and describe != ''">
-                describe = #{describe,jdbcType=VARCHAR},
+            <if test="description != null and description != ''">
+                description = #{description,jdbcType=VARCHAR},
             </if>
         </set>
         where dish_id = #{dish_id,jdbcType=INTEGER}
     </update>
 
-<!--    删除功能-->
+    <!-- 删除功能 -->
     <delete id="deleteGoods" parameterType="java.lang.Integer">
         DELETE FROM dishes
         WHERE dish_id = #{dish_id,jdbcType=INTEGER}
     </delete>
 
-<!--    添加菜品-->
+    <!-- 添加菜品 -->
     <insert id="addDishes" parameterType="com.onlineorder.onlineordersystem.model.pojo.Goods">
-        INSERT INTO dishes (dish_name,path,price,mon_sale,describe)
-        VALUES (#{dish_name,jdbcType=VARCHAR},#{path,jdbcType=VARCHAR},#{price,jdbcType=DECIMAL},#{mon_sale,jdbcType=INTEGER},#{describe,jdbcType=VARCHAR})
+        INSERT INTO dishes (dish_name, path, price, mon_sale, description)
+        VALUES (#{dish_name,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR},
+                #{price,jdbcType=DECIMAL}, #{mon_sale,jdbcType=INTEGER},
+                #{description,jdbcType=VARCHAR})
     </insert>
 </mapper>
