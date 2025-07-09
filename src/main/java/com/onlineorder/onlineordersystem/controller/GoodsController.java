@@ -21,9 +21,6 @@ public class GoodsController {
     @GetMapping("/getGoodsInfo")
     public Result getGoodsInfo(){
         ArrayList<Goods> goods = goodsService.getGoodsInfo();
-        for(Goods good : goods){
-            System.out.println(good.getDescription());
-        }
         if(goods != null){
             return new Result(Code.DISH_GET_SUCCESS,"获取所有菜品信息成功!",goods);
         } else {

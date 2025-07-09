@@ -110,8 +110,8 @@ public class AdminController {
     }
 
     @PostMapping("/dealUserOrder")
-    public Result dealUserOrder(@RequestParam int order_id){
-        boolean flag = adminService.dealUserOrder(order_id);
+    public Result dealUserOrder(@RequestBody OrderRequest request){
+        boolean flag = adminService.dealUserOrder(request.getOrder_id());
         if (flag) {
             return new Result(Code.DEAL_USERORDERS_SUCCESS,"处理用户订单成功!",flag);
         } else {
